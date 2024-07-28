@@ -1,0 +1,53 @@
+body {
+  background-color: black;
+  color: azure;
+  margin: 0%;
+  padding: 0%;
+  font-family: "Syncopate";
+  height: 100vh;
+  display: flex;
+  width:100vw;
+}
+.bo{
+  max-width:75vw;
+  height:auto;
+  padding: 30px;
+}
+p{
+  font-size: 20px;
+}
+.cont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h1 {
+  padding: 30px;
+  text-align: center;
+}
+.in {
+  display: inline-flex;
+}
+.im {
+  display:flex;
+  width: auto;
+  height: auto;
+  max-width: 7vw;
+  max-height: 40vh;
+  transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  opacity: 0.3;
+}
+.im:hover {
+  max-width: 15vw;
+  opacity:1;
+}
+.bw{
+  background-color: transparent;
+  color: azure;
+  align-items: start;
+  justify-items: right;
+  border: none;
+  font-size: 30px;
+}
