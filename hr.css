@@ -6,25 +6,25 @@ body {
   font-family: "Syncopate";
   height: 100vh;
   display: flex;
-  width:100vw;
+  width: 100vw;
   justify-content: center;
   border-top: 50px;
   overflow-x: hidden;
 }
-.bo{
-  max-width:75vw;
-  height:auto;
+.bo {
+  max-width: 75vw;
+  height: auto;
   padding: 30px;
 }
-p{
+p {
   font-size: 20px;
 }
-.cont{
+.cont {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  top:50px;
+  top: 50px;
 }
 h1 {
   padding: 30px;
@@ -34,7 +34,7 @@ h1 {
   display: inline-flex;
 }
 .im {
-  display:flex;
+  display: flex;
   width: auto;
   height: auto;
   max-width: 7vw;
@@ -45,9 +45,9 @@ h1 {
 }
 .im:hover {
   max-width: 15vw;
-  opacity:1;
+  opacity: 1;
 }
-.bw{
+.bw {
   background-color: transparent;
   color: azure;
   align-items: start;
