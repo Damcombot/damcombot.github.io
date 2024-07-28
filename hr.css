@@ -9,6 +9,7 @@ body {
   width:100vw;
   justify-content: center;
   border-top: 50px;
+  overflow-x: hidden;
 }
 .bo{
   max-width:75vw;
