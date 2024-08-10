@@ -181,6 +181,10 @@ header {
     right: 0; /* Adjust position for mobile */
     width: 100vw; /* Adjust width for mobile */
   }
+  figure blockquote{
+    padding-top:0px;
+  }
+  
 }
 .enf{
   transition-duration: 0.5s;
@@ -189,3 +193,4 @@ header {
 .enf:hover{
   color:#ffffff;
 }
+
