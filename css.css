@@ -132,6 +132,7 @@ header {
     display: flex;
     text-align: center;
     flex-direction: column;
+    padding-top:10px;
   }
 
   .imn {
