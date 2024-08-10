@@ -185,6 +185,8 @@ header {
   }
   figure blockquote{
     padding-top:0px;
+    visiblity:hidden;
+    position:fixed;
   }
   
 }
