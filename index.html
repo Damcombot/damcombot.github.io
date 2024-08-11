@@ -10,112 +10,213 @@
       href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Syncopate:wght@400;700&display=swap"
       rel="stylesheet"
     />
-     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&family=Syncopate:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css.css" />
     <title>Leonuraht</title>
+    <style>
+      #loader {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: #151407;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: azure;
+        overflow: hidden;
+      }
+
+      #loader-container {
+        text-align: center;
+      }
+
+      #loading-text {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      #percentage {
+        font-size: 32px;
+        font-family: "Syncopate", sans-serif;
+      }
+
+      #loading-passage {
+        font-size: 40px;
+        font-family: "Fira Sans";
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        width: 100%;
+        margin: 30px auto;
+        color: #eae093;
+        animation: moveWords 70s linear infinite;
+        transform: translateX(0%);
+      }
+
+      @keyframes moveWords {
+        0% {
+          transform: translateX(0%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Hide content initially */
+      #content {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <header class="center">
-      <h1>Leonuraht</h1>
-    </header>
-    <div class="big">
-      <div>
-        <img src="upload.jpg" alt="" class="box" />
-      </div>
-      <div>
-        <img src="new.jpg" alt="" class="box" />
-      </div>
-      <div>
-        <img src="OIP.jpeg" alt="" class="box" />
-      </div>
-      <div>
-        <img
-          src="https://wallpaperaccess.com/full/53929.jpg"
-          alt=""
-          class="box"
-        />
-      </div>
-      <div>
-        <img src="new1.jpg" alt="" class="box" />
-      </div>
-      <div>
-        <img src="new2.jpg" alt="" class="box" />
-      </div>
-      <div>
-        <img src="new3.jpg" alt="" class="box" />
-      </div>
-    </div>
-    <figure
-      style="display: inline-flex; padding-top: 30px; width: 100vw"
-      class="h"
-    >
-      <blockquote
-        style="
-          padding-top: 70px;
-          font-family: monospace;
-          color: #eae093;
-          width: max-content;
-        "
-      >
-        <div style="border: 1px solid white; padding: 10px" class="hi">
-          Choose your pain,the pain of DISCIPLINE or the pain of REGRET
+    <div id="loader">
+      <div id="loader-container">
+        <div id="loading-text"></div>
+        <div id="percentage">0%</div>
+        <div id="loading-passage">
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME | JUST ME |
+          JUST ME | JUST ME |
         </div>
-      </blockquote>
-      <img
-        src="download-modified.png"
-        alt=""
-        class="imn"
-      />
-    </figure>
-    <div class="h">
-      <h1 style="color: azure">#<span class="hed">About</span>--</h1>
-      <p>
-        just a regular scholar who programs as hobby and fun.The programming
-        languages currently known by him are python and HTML CSS .Trying to
-        improve in studies and thats all...nothing else...
-      </p>
-    </div>
-    <div class="h">
-      <h2 style="color: azure">#<span class="hed">OUR PROJECTS</span>--</h2>
-      <p>
-        <a
-          href="https://damcombot.github.io/Web/"
-          tagret="_blank"
-          class="enf"
-          style="
-            text-decoration: none;
-            font-family: 'Space Grotesk';
-            font-size: 40px;
-            padding-left: 3vw;
-          "
-          ><b>Vadarly</b></a
-        >
-      </p>
-      <p>
-        <a
-          href="https://damcombot.github.io/enter/"
-          tagret="_blank"
-          class="enf"
-          style="
-            text-decoration: none;
-            font-family: 'Space Grotesk';
-            font-size: 40px;
-            padding-left: 3vw;
-          "
-          ><b>Stupidly</b></a
-        >
-      </p>
-    </div>
-    <footer>
-      <div class="fr">
-        <p class="pos">Leonuraht <sup>&copy;</sup></p>
-        <p><a href="mailto:blinderoggy@gmail.com" style="text-decoration:none" class="cont">contact us</a></p>
       </div>
-    </footer>
+    </div>
+
+    <div id="content">
+      <!-- Your existing content here -->
+      <header class="center">
+        <h1>Leonuraht</h1>
+      </header>
+      <div class="big">
+        <div>
+          <img src="upload.jpg" alt="" class="box" />
+        </div>
+        <div>
+          <img src="new.jpg" alt="" class="box" />
+        </div>
+        <div>
+          <img src="OIP.jpeg" alt="" class="box" />
+        </div>
+        <div>
+          <img
+            src="https://wallpaperaccess.com/full/53929.jpg"
+            alt=""
+            class="box"
+          />
+        </div>
+        <div>
+          <img src="new1.jpg" alt="" class="box" />
+        </div>
+        <div>
+          <img src="new2.jpg" alt="" class="box" />
+        </div>
+        <div>
+          <img src="new3.jpg" alt="" class="box" />
+        </div>
+      </div>
+      <figure
+        style="display: inline-flex; padding-top: 30px; width: 100vw"
+        class="h"
+      >
+        <blockquote
+          style="
+            padding-top: 70px;
+            font-family: monospace;
+            color: #eae093;
+            width: max-content;
+          "
+        >
+          <div style="border: 1px solid white; padding: 10px" class="hi">
+            Choose your pain,the pain of DISCIPLINE or the pain of REGRET
+          </div>
+        </blockquote>
+        <img src="download-modified.png" alt="" class="imn" />
+      </figure>
+      <div class="h">
+        <h1 style="color: azure">#<span class="hed">About</span>--</h1>
+        <p>
+          just a regular scholar who programs as hobby and fun. The programming
+          languages currently known by him are python and HTML CSS. Trying to
+          improve in studies and that's all...nothing else...
+        </p>
+      </div>
+      <div class="h">
+        <h2 style="color: azure">#<span class="hed">OUR PROJECTS</span>--</h2>
+        <p>
+          <a
+            href="https://damcombot.github.io/Web/"
+            target="_blank"
+            class="enf"
+            style="
+              text-decoration: none;
+              font-family: 'Space Grotesk';
+              font-size: 40px;
+              padding-left: 3vw;
+            "
+            ><b>Vadarly</b></a
+          >
+        </p>
+        <p>
+          <a
+            href="https://damcombot.github.io/enter/"
+            target="_blank"
+            class="enf"
+            style="
+              text-decoration: none;
+              font-family: 'Space Grotesk';
+              font-size: 40px;
+              padding-left: 3vw;
+            "
+            ><b>Stupidly</b></a
+          >
+        </p>
+      </div>
+      <footer>
+        <div class="fr">
+          <p class="pos">Leonuraht <sup>&copy;</sup></p>
+          <p>
+            <a
+              href="mailto:blinderoggy@gmail.com"
+              style="text-decoration: none"
+              class="cont"
+              >contact us</a
+            >
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        let loader = document.getElementById("loader");
+        let percentage = document.getElementById("percentage");
+        let content = document.getElementById("content");
+
+        let loadProgress = 0;
+        let interval = setInterval(function () {
+          loadProgress += 1;
+          percentage.textContent = loadProgress + "%";
+
+          if (loadProgress === 100) {
+            clearInterval(interval);
+            loader.style.display = "none";
+            content.style.display = "block";
+            document.body.style.overflow = "auto";
+          }
+        }, 30);
+      });
+    </script>
   </body>
 </html>
