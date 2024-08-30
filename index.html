@@ -99,32 +99,28 @@
       <p>&copy; 2024 Leonuraht. All rights reserved.</p>
     </footer>
     <script src="k.js"></script>
-        <script>
+    <script>
       document.onreadystatechange = function () {
-        if (document.readyState === 'complete') {
-          document.getElementById('loader').style.transform = 'translateY(-100%)';
+        if (document.readyState === "interactive") {
+          let progress = 0;
+          const progressBar = document.getElementById("progressBar");
+          const interval = setInterval(() => {
+            progress += 5;
+            progressBar.style.width = progress + "%";
+            if (progress >= 100) {
+              clearInterval(interval);
+            }
+          }, 200);
+        }
+
+        if (document.readyState === "complete") {
+          const loader = document.getElementById("loader");
+          loader.style.opacity = "0";  // Fade out the loader and background
           setTimeout(() => {
-            document.getElementById('loader').style.display = 'none';
-          }, 1000);
+            loader.style.display = "none";  // Remove loader after fade-out
+          }, 1000);  // Matches the fade-out duration in CSS
         }
       };
-
-      let loaderBar = document.getElementById('loader-bar');
-      window.addEventListener('load', () => {
-        let images = document.images;
-        let totalImages = images.length;
-        let imagesLoaded = 0;
-
-        for (let i = 0; i < totalImages; i++) {
-          let img = new Image();
-          img.src = images[i].src;
-          img.onload = () => {
-            imagesLoaded++;
-            let percent = (imagesLoaded / totalImages) * 100;
-            loaderBar.style.width = percent + '%';
-          };
-        }
-      });
     </script>
   </body>
 </html>
