@@ -14,7 +14,6 @@ musicToggle.addEventListener("click", () => {
   isPlaying = !isPlaying;
 });
 // script.js
-
 document.addEventListener("DOMContentLoaded", function () {
   // Create the custom cursor element
   const cursor = document.createElement("div");
@@ -51,6 +50,26 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("load", function () {
   document.body.classList.add("loaded");
 });
+document.onreadystatechange = function () {
+  if (document.readyState === "interactive") {
+    let progress = 0;
+    const progressBar = document.getElementById("progressBar");
+    const interval = setInterval(() => {
+      progress += 10;
+      progressBar.style.width = progress + "%";
+      if (progress >= 100) {
+        clearInterval(interval);
+      }
+    }, 100); // Adjust the speed here if necessary
+  }
+
+  if (document.readyState === "complete") {
+    document.getElementById("loader").style.transform = "translateY(-100%)";
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+    }, 1000);
+  }
+};
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
