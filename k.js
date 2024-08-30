@@ -50,26 +50,37 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("load", function () {
   document.body.classList.add("loaded");
 });
-document.onreadystatechange = function () {
-  if (document.readyState === "interactive") {
-    let progress = 0;
-    const progressBar = document.getElementById("progressBar");
-    const interval = setInterval(() => {
-      progress += 10;
-      progressBar.style.width = progress + "%";
-      if (progress >= 100) {
-        clearInterval(interval);
-      }
-    }, 100); // Adjust the speed here if necessary
-  }
 
-  if (document.readyState === "complete") {
-    document.getElementById("loader").style.transform = "translateY(-100%)";
-    setTimeout(() => {
-      document.getElementById("loader").style.display = "none";
-    }, 1000);
+  // Simulate loading progress
+let progress = 0;
+const progressBar = document.getElementById("progressBar");
+
+const interval = setInterval(() => {
+  progress += 10; // Increase progress by 10% at each interval
+  progressBar.style.width = progress + "%";
+  
+  if (progress >= 100) {
+    clearInterval(interval); // Stop the interval once progress reaches 100%
   }
+}, 100); // Adjust this interval for smoother or faster progress
+
+// On page load
+window.onload = function () {
+  clearInterval(interval); // Ensure the interval is cleared in case progress hasn't reached 100%
+  
+  // Complete the progress bar
+  progressBar.style.width = "100%";
+  
+  // Animate the loader out
+  document.getElementById("loader").style.transform = "translateY(-100%)";
+  
+  // Hide the loader after the animation
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+  }, 1000); // Adjust this delay to match the transition time
 };
+
+
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
