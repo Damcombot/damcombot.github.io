@@ -135,14 +135,15 @@ textarea {
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  transition: transform 0.5s ease-in-out;
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* Fade out effect */
 }
 
 #progressBar {
   width: 0;
-  height: 5px;
+  height: 10px;
   background-color: var(--primaryFg);
-  transition: width 0.4s ease;
+  transition: width 0.2s ease;
 }
 /* Slider */
 .slider {
