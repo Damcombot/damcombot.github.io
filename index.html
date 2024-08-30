@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="k.css" />
   </head>
   <body>
-    <div id="loader"></div>
+    <div id="loader">
+      <div id="loader-bar"></div>
+    </div>
     <header>
       <div class="logo">:)</div>
       <nav>
@@ -97,16 +99,32 @@
       <p>&copy; 2024 Leonuraht. All rights reserved.</p>
     </footer>
     <script src="k.js"></script>
-    <script>
+        <script>
       document.onreadystatechange = function () {
-        if (document.readyState === "complete") {
-          document.getElementById("loader").style.transform =
-            "translateY(-100%)";
+        if (document.readyState === 'complete') {
+          document.getElementById('loader').style.transform = 'translateY(-100%)';
           setTimeout(() => {
-            document.getElementById("loader").style.display = "none";
+            document.getElementById('loader').style.display = 'none';
           }, 1000);
         }
       };
+
+      let loaderBar = document.getElementById('loader-bar');
+      window.addEventListener('load', () => {
+        let images = document.images;
+        let totalImages = images.length;
+        let imagesLoaded = 0;
+
+        for (let i = 0; i < totalImages; i++) {
+          let img = new Image();
+          img.src = images[i].src;
+          img.onload = () => {
+            imagesLoaded++;
+            let percent = (imagesLoaded / totalImages) * 100;
+            loaderBar.style.width = percent + '%';
+          };
+        }
+      });
     </script>
   </body>
 </html>
