@@ -18,16 +18,20 @@ const audio = document.getElementById('audio'); // Make sure you have this audio
 
 // Load the GLTF model
 const loader = new GLTFLoader();
-let model; // Declare model variable in the outer scope to access it in adjustModelSize
+let model; // Declare model variable in the outer scope to access it in the function
 
 loader.load(
   'untitled.glb', 
   (gltf) => {
-    model = gltf.scene;
+    model = gltf.scene; // Set model when it's loaded
     model.rotation.y += THREE.MathUtils.degToRad(45); // Convert degrees to radians
     model.position.set(0, -0.5, 0);  // Adjust position if necessary
     model.scale.set(1, 1, 1);  // Scale the model if necessary
     scene.add(model);  // Add the model to the scene
+
+    // Add event listener for model interaction after it's loaded
+    window.addEventListener('click', onModelClick, false);
+    adjustModelSize(); // Call adjustModelSize here to set the correct size after loading
   },
   undefined,
   (error) => {
@@ -50,31 +54,26 @@ controls.enableRotate = true;
 controls.enablePan = false;
 controls.enableZoom = true;
 
-// Restrict rotation to the Y-axis only
-controls.minPolarAngle = Math.PI / 2; // Lock the up/down rotation
-controls.maxPolarAngle = Math.PI / 2; // Lock the up/down rotation
-
 // Play audio on model interaction
 function onModelClick(event) {
-  // Raycasting to detect mouse interactions
-  const raycaster = new THREE.Raycaster();
-  const mouse = new THREE.Vector2();
+  if (model) { // Check if model is loaded
+    // Raycasting to detect mouse interactions
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
 
-  // Convert mouse coordinates to normalized device coordinates
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    // Convert mouse coordinates to normalized device coordinates
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-  raycaster.setFromCamera(mouse, camera);
+    raycaster.setFromCamera(mouse, camera);
 
-  // Check if the model is clicked
-  const intersects = raycaster.intersectObject(model);
-  if (intersects.length > 0) {
-    audio.play();  // Play audio on model interaction
+    // Check if the model is clicked
+    const intersects = raycaster.intersectObject(model);
+    if (intersects.length > 0) {
+      audio.play();  // Play audio on model interaction
+    }
   }
 }
-
-// Add event listener for mouse clicks
-window.addEventListener('click', onModelClick, false);
 
 // Animation loop
 function animate() {
@@ -85,12 +84,14 @@ function animate() {
 
 // Adjust model size for mobile screens
 function adjustModelSize() {
-  if (window.innerWidth <= 768 && model) {
-    // Mobile screen: Scale down the model
-    model.scale.set(0.5, 0.5, 0.5);  // Set the scale smaller for mobile
-  } else if (model) {
-    // Larger screens: Use the default scale
-    model.scale.set(1, 1, 1);  // Default scale for desktop
+  if (model) { // Check if model is defined
+    if (window.innerWidth <= 768) {
+      // Mobile screen: Scale down the model
+      model.scale.set(0.5, 0.5, 0.5);  // Set the scale smaller for mobile
+    } else {
+      // Larger screens: Use the default scale
+      model.scale.set(1, 1, 1);  // Default scale for desktop
+    }
   }
 }
 
@@ -103,5 +104,4 @@ window.addEventListener("resize", () => {
 });
 
 // Initial model size adjustment
-adjustModelSize();
 animate();
