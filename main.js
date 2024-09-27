@@ -1,6 +1,6 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/loaders/GLTFLoader.js';
 
 const canvas = document.getElementById("canvas");
 const scene = new THREE.Scene();
@@ -16,7 +16,7 @@ const renderer = new THREE.WebGLRenderer({ canvas });
 // Load the GLTF model
 const loader = new GLTFLoader();
 loader.load(
-  'models/untitled.glb', 
+  'untitled.glb', 
   (gltf) => {
     const model = gltf.scene;
     model.rotation.y += 45;
