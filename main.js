@@ -55,11 +55,21 @@ function animate() {
   controls.update();
   renderer.render(scene, camera);
 }
+function adjustModelSize() {
+  if (window.innerWidth <= 768) {
+    // Mobile screen: Scale down the model
+    model.scale.set(0.5, 0.5, 0.5);  // Set the scale smaller for mobile
+  } else {
+    // Larger screens: Use the default scale
+    model.scale.set(1, 1, 1);  // Default scale for desktop
+  }
+}
 
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
+window.addEventListener('resize', adjustModelSize);
+adjustModelSize();
 animate();
