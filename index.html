@@ -3,125 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leonuraht</title>
-    <link rel="stylesheet" href="k.css" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9043350550934098"
-     crossorigin="anonymous"></script>
+    <title>New 3D</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+      }
+
+      div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        z-index: 88;
+        color: rgb(26, 255, 91);
+        font-size: 2em;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <div id="loader">
-      <div id="loader-bar"></div>
-    </div>
-    <header>
-      <div class="logo">:)</div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <audio id="backgroundMusic" loop>
-      <source
-        src="star-travelers-adi-goldstein-main-version.mp3"
-        type="audio/mpeg"
-      />
-      Your browser does not support the audio element.
-    </audio>
-    <button id="musicToggle" class="cta-button">Aura</button>
-    <div id="home" class="hero">
-      <video autoplay muted loop class="bg-video">
-        <source src="00900.mp4"type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="hero-content">
-
-      </div>
-    </div>
-    <h2
-      class="hidden"
-      style="
-        display: flex;
-        justify-self: left;
-        font-size: 30px;
-        color: var(--accent);
-      "
-    >
-      Gallery
-    </h2>
-    <section id="gallery" class="hidden">
-      <div
-        class="slider"
-        style="--width: 220px; --height: 220px; --quantity: 6"
-      >
-        <div class="list">
-          <div class="item" style="--position: 1">
-            <img src="999.jpeg" alt="" />
-          </div>
-          <div class="item" style="--position: 2">
-            <img src="abs.png" alt="" />
-          </div>
-          <div class="item" style="--position: 3">
-            <img src="untitled11.png" alt="" />
-          </div>
-          <div class="item" style="--position: 4">
-            <img src="01.png" alt="" />
-          </div>
-          <div class="item" style="--position: 5">
-            <img src="00121.png" alt="" />
-          </div>
-          <div class="item" style="--position: 6">
-            <img
-              src="DALL·E 2024-08-11 10.20.56 - An abstract and simple representation of computer code. The image features stylized, minimalist lines and shapes that resemble code, with patterns and.webp"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="about" class="hidden">
-      <h2 style="display: flex">
-        <b style="font-size: 30px; color: var(--accentHi)">About</b>
-      </h2>
-      <p>
-        Leonuraht is a web developer who creates visually engaging websites,
-        blending abstract design with modern technologies. They specialize in
-        JavaScript, HTML, and CSS, adding custom features like sliders and
-        animations for a unique user experience.
-      </p>
-    </section>
-    <section id="contact" class="hidden">
-      <h2>Get in <a href="mailto:blinderoggy@gmail.com">touch</a></h2>
-    </section>
-
-    <footer>
-      <p>&copy; 2024 Leonuraht. All rights reserved.</p>
-    </footer>
-    <script src="k.js"></script>
-    <script>
-      document.onreadystatechange = function () {
-        if (document.readyState === "interactive") {
-          let progress = 0;
-          const progressBar = document.getElementById("progressBar");
-          const interval = setInterval(() => {
-            progress += 5;
-            progressBar.style.width = progress + "%";
-            if (progress >= 100) {
-              clearInterval(interval);
-            }
-          }, 200);
-        }
-
-        if (document.readyState === "complete") {
-          const loader = document.getElementById("loader");
-          loader.style.opacity = "0";  // Fade out the loader and background
-          setTimeout(() => {
-            loader.style.display = "none";  // Remove loader after fade-out
-          }, 1000);  // Matches the fade-out duration in CSS
-        }
-      };
-    </script>
+    <canvas id="canvas"></canvas>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
