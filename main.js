@@ -13,14 +13,18 @@ const camera = new THREE.PerspectiveCamera(
 const light = new THREE.SpotLight("#ffffff", 13, 0, 40);
 const renderer = new THREE.WebGLRenderer({ canvas });
 
+// Audio setup
+const audio = document.getElementById('audio'); // Make sure you have this audio element in your HTML
+
 // Load the GLTF model
 const loader = new GLTFLoader();
+let model; // Declare model variable in the outer scope to access it in adjustModelSize
+
 loader.load(
   'untitled.glb', 
   (gltf) => {
-    const model = gltf.scene;
-    model.rotation.y += 45;
-  // Optional: Animation or transformation
+    model = gltf.scene;
+    model.rotation.y += THREE.MathUtils.degToRad(45); // Convert degrees to radians
     model.position.set(0, -0.5, 0);  // Adjust position if necessary
     model.scale.set(1, 1, 1);  // Scale the model if necessary
     scene.add(model);  // Add the model to the scene
@@ -46,30 +50,58 @@ controls.enableRotate = true;
 controls.enablePan = false;
 controls.enableZoom = true;
 
-// Restrict the rotation only around the Y-axis
-//controls.minPolarAngle = Math.PI / 2; // Lock the up/down rotation
-//controls.maxPolarAngle = Math.PI / 2; // Lock the up/down rotation
+// Restrict rotation to the Y-axis only
+controls.minPolarAngle = Math.PI / 2; // Lock the up/down rotation
+controls.maxPolarAngle = Math.PI / 2; // Lock the up/down rotation
 
+// Play audio on model interaction
+function onModelClick(event) {
+  // Raycasting to detect mouse interactions
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+
+  // Convert mouse coordinates to normalized device coordinates
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+
+  // Check if the model is clicked
+  const intersects = raycaster.intersectObject(model);
+  if (intersects.length > 0) {
+    audio.play();  // Play audio on model interaction
+  }
+}
+
+// Add event listener for mouse clicks
+window.addEventListener('click', onModelClick, false);
+
+// Animation loop
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
   renderer.render(scene, camera);
 }
+
+// Adjust model size for mobile screens
 function adjustModelSize() {
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth <= 768 && model) {
     // Mobile screen: Scale down the model
     model.scale.set(0.5, 0.5, 0.5);  // Set the scale smaller for mobile
-  } else {
+  } else if (model) {
     // Larger screens: Use the default scale
     model.scale.set(1, 1, 1);  // Default scale for desktop
   }
 }
 
+// Handle window resize
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  adjustModelSize();  // Adjust model size on resize
 });
-window.addEventListener('resize', adjustModelSize);
+
+// Initial model size adjustment
 adjustModelSize();
 animate();
