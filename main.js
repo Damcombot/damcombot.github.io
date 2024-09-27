@@ -14,11 +14,11 @@ const light = new THREE.SpotLight("#ffffff", 13, 0, 40);
 const renderer = new THREE.WebGLRenderer({ canvas });
 
 // Audio setup
-const audio = document.getElementById('audio'); // Make sure you have this audio element in your HTML
+const audio = new Audio('star-travelers-adi-goldstein-main-version.mp3'); // Use the audio element from the HTML
 
 // Load the GLTF model
 const loader = new GLTFLoader();
-let model; // Declare model variable in the outer scope to access it in the function
+let model = null; // Initialize model as null
 
 loader.load(
   'untitled.glb', 
@@ -100,7 +100,7 @@ window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  adjustModelSize();  // Adjust model size on resize
+  adjustModelSize();  // Adjust model size on resize if model is loaded
 });
 
 // Initial model size adjustment
